@@ -17,7 +17,7 @@ if (response.getError() == null) {
     System.out.println(error.getCode() + ": " + error.getMessage());
 }
 ```
-A list of requests along with their expected response types can be found [here](requests.md).
+A list of requests along with their expected response types can be found [here](REQUESTS.md).
 
 # Sorting
 Sorting is possible by passing a SortOptions object into the constructor of supported requests (simply pass null if you don't care about sorting).
