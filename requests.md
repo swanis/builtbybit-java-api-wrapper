@@ -2,11 +2,11 @@
 HealthRequest (String)
 
 ## Alerts
-ListUnreadAlertsRequest (Alert[])  
+ListUnreadAlertsRequest(SortOptions sortOptions) (Alert[])  
 MarkUnreadAlertsAsReadRequest(boolean read) (Void)
 
 ## Conversations
-ListUnreadConversationsRequest (Conversation[])  
+ListUnreadConversationsRequest(SortOptions sortOptions) (Conversation[])  
 StartConversationRequest(int recipientId, String title, String message) (Void)
 
 ## Members
@@ -18,50 +18,50 @@ RetrieveYourselfRequest (Member)
 ## Profile Posts
 DeleteProfilePostRequest(int profilePostId) (Void)  
 EditProfilePostRequest(int profilePostId, String message) (Void)  
-ListProfilePostsRequest (ProfilePost[])  
+ListProfilePostsRequest(SortOptions sortOptions) (ProfilePost[])  
 RetrieveSpecificProfilePostRequest(int profilePostId) (ProfilePost)
 
 ## Resources
-ListOwnedResourcesRequest (Resource[])  
-ListPublicResourcesRequest (Resource[])  
+ListOwnedResourcesRequest(SortOptions sortOptions) (Resource[])  
+ListPublicResourcesRequest(SortOptions sortOptions) (Resource[])  
 ModifyResourceRequest(int resourceId, String title, String tag_line, String description) (Void)  
 RetrieveResourceRequest(int resourceId) (DetailedResource)
 
 ## Resource Downloads
-ListResourceDownloadsByMemberRequest(int resourceId, int memberId) (ResourceDownload[])  
-ListResourceDownloadsByVersionRequest(int resourceId, int versionId) (ResourceDownload[])  
-ListResourceDownloadsRequest(int resourceId) (ResourceDownload[])
+ListResourceDownloadsByMemberRequest(int resourceId, int memberId, SortOptions sortOptions) (ResourceDownload[])  
+ListResourceDownloadsByVersionRequest(int resourceId, int versionId, SortOptions sortOptions) (ResourceDownload[])  
+ListResourceDownloadsRequest(int resourceId, SortOptions sortOptions) (ResourceDownload[])
 
 ## Resource Licenses
 IssueResourceLicenseRequest(int resourceId, int purchaserId, long startDate, long endDate, boolean active, String siteUrl) (Void)  
-ListResourceLicensesRequest(int resourceId) (ResourceLicense[])  
+ListResourceLicensesRequest(int resourceId, SortOptions sortOptions) (ResourceLicense[])  
 ModifyResourceLicenseRequest(int resourceId, int licenseId, long startDate, long endDate, boolean active) (Void)  
 RetrieveResourceLicenseRequest(int resourceId, int licenseId) (ResourceLicense)  
 ValidateResourceLicenseRequest(int resourceId, int purchaserId) (ResourceLicense)
 
 ## Resource Purchases
-ListResourcePurchasesRequest(int resourceId) (ResourcePurchase[])  
+ListResourcePurchasesRequest(int resourceId, SortOptions sortOptions) (ResourcePurchase[])  
 RetrieveResourcePurchaseRequest(int resourceId, int purchaseId) (ResourcePurchase)
 
 ## Resource Reviews
-ListResourceReviewsRequest(int resourceId) (ResourceReview[])  
+ListResourceReviewsRequest(int resourceId, SortOptions sortOptions) (ResourceReview[])  
 RespondToResourceReviewRequest(int resourceId, int reviewId, String message) (Void)  
 RetrieveMemberResourceReviewRequest(int resourceId, int memberId) (ResourceReview)
 
 ## Resource Updates
-ListResourceUpdatesRequest(int resourceId) (ResourceUpdate[])  
+ListResourceUpdatesRequest(int resourceId, SortOptions sortOptions) (ResourceUpdate[])  
 RetrieveLatestResourceUpdateRequest(int resourceId) (ResourceUpdate)  
 RetrieveResourceUpdateRequest(int resourceId, int updateId) (ResourceUpdate)
 
 ## Resource Versions
-ListResourceVersionsRequest(int resourceId) (ResourceVersion[])  
+ListResourceVersionsRequest(int resourceId, SortOptions sortOptions) (ResourceVersion[])  
 RetrieveLatestResourceVersionRequest(int resourceId) (ResourceVersion)  
 RetrieveResourceVersionRequest(int resourceId, int versionId) (ResourceVersion)
 
 ## Threads
 FetchThreadRequest(int threadId) (DetailedThread)  
-ListThreadsRequest (Thread[])
+ListThreadsRequest(SortOptions sortOptions) (Thread[])
 
 ## Thread Replies
-ListThreadRepliesRequest(int threadId) (ThreadReply[])  
+ListThreadRepliesRequest(int threadId, SortOptions sortOptions) (ThreadReply[])  
 ReplyToThreadRequest(int threadId, String message) (Void)
