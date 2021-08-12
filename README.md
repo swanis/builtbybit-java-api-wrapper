@@ -1,8 +1,8 @@
 # mcmarket-api-java-wrapper
 
-This is a complete and easy-to-use Java Wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/).
+This is a complete and easy-to-use Java wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/) built with Java SE Development Kit 16.0.2.
 
-# Send a request
+# Sending a request
 ```java
 Client client = new Client(new Token("TOKEN STRING", Token.Type.PRIVATE));
 Response<Member> response = client.sendOrWait(new RetrieveYourselfRequest());
@@ -38,3 +38,20 @@ if (response.getError() == null) {
 }
 ```
 Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/ultimate-api-v1/).
+
+# Maven Installation Guide
+1. Download the latest JAR file [here](https://github.com/swanis/mcmarket-api-java-wrapper/releases).
+
+2. Run this command in your terminal to add the jar file as a maven dependency in your local repository:
+```bash
+mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=<path-to-file>
+```
+
+3. Add it to your project's dependencies as such:
+```xml
+<dependency>
+    <groupId>is.swan</groupId>
+    <artifactId>mcmarket-api-java-wrapper</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
