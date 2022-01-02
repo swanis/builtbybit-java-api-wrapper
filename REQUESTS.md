@@ -44,7 +44,7 @@ ListResourceLicensesRequest(int resourceId, SortOptions sortOptions) (ResourceLi
 ModifyResourceLicenseRequest(int resourceId, int licenseId, long startDate, long endDate, boolean active) (Void)  
 RetrieveResourceLicenseRequest(int resourceId, int licenseId) (ResourceLicense)  
 ValidateResourceLicenseRequest(int resourceId, int purchaserId, int nonce, long timestamp) (ResourceLicense)
-RetrieveResourceLicenseByMemberRequest(int resourceId, int purchaserId, int nonce, long timestamp) (ResourceLicense)
+RetrieveResourceLicenseByMemberRequest(int resourceId, int memberId, int nonce, long timestamp) (ResourceLicense)
 
 ## Resource Purchases
 ListResourcePurchasesRequest(int resourceId, SortOptions sortOptions) (ResourcePurchase[])  
