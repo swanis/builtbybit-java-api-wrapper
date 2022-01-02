@@ -46,18 +46,11 @@ public class Client {
     }
 
     private Response getResponse(Request request) {
-        Response response = null;
-
-        if (request.getMethod() == Request.Method.GET) {
-            response = HTTPUtil.get(request.getURL(), token);
-        } else if (request.getMethod() == Request.Method.POST) {
-            response = HTTPUtil.post(request.getURL(), request.getBody(), token);
-        } else if (request.getMethod() == Request.Method.DELETE) {
-            response = HTTPUtil.delete(request.getURL(), token);
-        } else if (request.getMethod() == Request.Method.PATCH) {
-            response = HTTPUtil.patch(request.getURL(), request.getBody(), token);
-        }
-
-        return response;
+        return switch(request.getMethod()) {
+            case GET -> HTTPUtil.get(request.getURL(), token);
+            case POST -> HTTPUtil.post(request.getURL(), request.getBody(), token);
+            case DELETE -> HTTPUtil.delete(request.getURL(), token);
+            case PATCH -> HTTPUtil.patch(request.getURL(), request.getBody(), token);
+        };
     }
 }

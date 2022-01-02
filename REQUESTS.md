@@ -9,10 +9,15 @@ MarkUnreadAlertsAsReadRequest(boolean read) (Void)
 ListUnreadConversationsRequest(SortOptions sortOptions) (Conversation[])  
 StartConversationRequest(int recipientId, String title, String message) (Void)
 
+## Conversation Replies
+ListUnreadConversationRepliesRequest(int conversationId, SortOptions sortOptions) (Conversation[])  
+ReplyToUnreadConversationRequest(int conversationId, String message) (Void)
+
 ## Members
 ListBansRequest (Ban[])  
 ModifyYourselfRequest(String customTitle, String aboutMe, String signature) (Void)  
-RetrieveMemberRequest(int memberId) (Member)  
+RetrieveMemberByIDRequest(int memberId) (Member)  
+RetrieveMemberByUsernameRequest(String username) (Member)  
 RetrieveYourselfRequest (Member)
 
 ## Profile Posts
@@ -24,6 +29,7 @@ RetrieveSpecificProfilePostRequest(int profilePostId) (ProfilePost)
 ## Resources
 ListOwnedResourcesRequest(SortOptions sortOptions) (Resource[])  
 ListPublicResourcesRequest(SortOptions sortOptions) (Resource[])  
+ListCollaboratedResourcesRequest(SortOptions sortOptions) (Resource[])  
 ModifyResourceRequest(int resourceId, String title, String tag_line, String description) (Void)  
 RetrieveResourceRequest(int resourceId) (DetailedResource)
 
@@ -37,7 +43,8 @@ IssueResourceLicenseRequest(int resourceId, int purchaserId, long startDate, lon
 ListResourceLicensesRequest(int resourceId, SortOptions sortOptions) (ResourceLicense[])  
 ModifyResourceLicenseRequest(int resourceId, int licenseId, long startDate, long endDate, boolean active) (Void)  
 RetrieveResourceLicenseRequest(int resourceId, int licenseId) (ResourceLicense)  
-ValidateResourceLicenseRequest(int resourceId, int purchaserId) (ResourceLicense)
+ValidateResourceLicenseRequest(int resourceId, int purchaserId, int nonce, long timestamp) (ResourceLicense)
+RetrieveResourceLicenseByMemberRequest(int resourceId, int purchaserId, int nonce, long timestamp) (ResourceLicense)
 
 ## Resource Purchases
 ListResourcePurchasesRequest(int resourceId, SortOptions sortOptions) (ResourcePurchase[])  

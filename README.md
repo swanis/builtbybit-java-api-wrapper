@@ -1,6 +1,6 @@
 # mcmarket-api-java-wrapper
 
-This is a complete and easy-to-use Java wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/) built with Java SE Development Kit 16.0.2.
+This is a complete and easy-to-use Java wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/) built with Java SE Development Kit 17.0.1.
 
 # Sending a request
 ```java
@@ -52,6 +52,6 @@ mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=<pat
 <dependency>
     <groupId>is.swan</groupId>
     <artifactId>mcmarket-api-java-wrapper</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 </dependency>
 ```

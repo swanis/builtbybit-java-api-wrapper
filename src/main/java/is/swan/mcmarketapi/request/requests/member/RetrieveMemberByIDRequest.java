@@ -5,11 +5,11 @@ import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Member;
 import is.swan.mcmarketapi.request.Request;
 
-public class RetrieveMemberRequest implements Request<Member> {
+public class RetrieveMemberByIDRequest implements Request<Member> {
 
     private final int memberId;
 
-    public RetrieveMemberRequest(int memberId) {
+    public RetrieveMemberByIDRequest(int memberId) {
         this.memberId = memberId;
     }
 
