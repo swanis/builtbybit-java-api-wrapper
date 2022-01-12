@@ -19,7 +19,7 @@ public class RetrieveResourceLicenseByMemberRequest implements Request<ResourceL
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/licenses/member/" + memberId + "?nonce=" + nonce + "&timestamp=" + timestamp;
+        return "https://api.mc-market.org/v1/resources/" + resourceId + "/licenses/members/" + memberId + "?nonce=" + nonce + "&timestamp=" + timestamp;
     }
 
     @Override

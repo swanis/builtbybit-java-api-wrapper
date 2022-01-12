@@ -43,7 +43,7 @@ if (response.getError() == null) {
     System.out.println(error.getCode() + ": " + error.getMessage());
 }
 ```
-Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/ultimate-api-v1/).
+Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/ultimate-api/).
 
 # Jitpack Installation
 ## Gradle
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.MC-Market-org:mcmarket-api-java-wrapper:VERSION'
+    implementation 'com.github.swanis:mcmarket-api-java-wrapper:VERSION'
 }
 ```
 
@@ -67,7 +67,7 @@ dependencies {
 </repositories>
 
 <dependency>
-    <groupId>com.github.MC-Market-org</groupId>
+    <groupId>com.github.swanis</groupId>
     <artifactId>mcmarket-api-java-wrapper</artifactId>
     <version>VERSION</version>
 </dependency>
