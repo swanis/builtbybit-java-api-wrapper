@@ -1,4 +1,12 @@
+[jitpack]: https://img.shields.io/jitpack/v/github/MC-Market-org/mcmarket-api-java-wrapper?label=Snapshots&style=for-the-badge
+[docs]: https://img.shields.io/badge/docs-v1-informational?style=for-the-badge
+
+<img alt="mc-market logo" align="right" src="https://github.com/MC-Market-org/mcmarket-api-java-wrapper/blob/assets/assets/icon-blue.png?raw=true" height="250" width="250">
+
+[ ![jitpack][] ](https://jitpack.io/#MC-Market-org/mcmarket-api-java-wrapper)
+[ ![docs][] ](https://www.mc-market.org/wiki/ultimate-api/) 
 # mcmarket-api-java-wrapper
+
 
 This is a complete and easy-to-use Java wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/) built with Java SE Development Kit 17.0.1.
 
@@ -39,19 +47,30 @@ if (response.getError() == null) {
 ```
 Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/ultimate-api-v1/).
 
-# Maven Installation Guide
-1. Download the latest JAR file [here](https://github.com/swanis/mcmarket-api-java-wrapper/releases).
+# Jitpack Installation
+## Gradle
+```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 
-2. Run this command in your terminal to add the jar file as a maven dependency in your local repository:
-```bash
-mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=<path-to-file>
+dependencies {
+    implementation 'com.github.MC-Market-org:mcmarket-api-java-wrapper:VERSION'
+}
 ```
 
-3. Add it to your project's dependencies as such:
+## Maven
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
 <dependency>
-    <groupId>is.swan</groupId>
+    <groupId>com.github.MC-Market-org</groupId>
     <artifactId>mcmarket-api-java-wrapper</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>VERSION</version>
 </dependency>
 ```
