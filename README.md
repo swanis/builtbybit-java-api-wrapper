@@ -1,6 +1,6 @@
 [jitpack]: https://img.shields.io/jitpack/v/github/swanis/mcmarket-api-java-wrapper?label=Version&style=for-the-badge
 
-<img alt="mc-market logo" align="right" src="https://i.imgur.com/kYnUS4c.png?raw=true" height="200" width="200">
+<a href="https://mc-market.org/"><img alt="mc-market logo" align="right" src="https://i.imgur.com/kYnUS4c.png?raw=true" height="200" width="200"></a>
 
 [ ![jitpack][] ](https://jitpack.io/#swanis/mcmarket-api-java-wrapper)
 # mcmarket-api-java-wrapper
