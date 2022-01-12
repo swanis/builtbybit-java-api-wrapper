@@ -1,10 +1,8 @@
-[jitpack]: https://img.shields.io/jitpack/v/github/MC-Market-org/mcmarket-api-java-wrapper?label=Snapshots&style=for-the-badge
-[docs]: https://img.shields.io/badge/docs-v1-informational?style=for-the-badge
+[jitpack]: https://img.shields.io/jitpack/v/github/swanis/mcmarket-api-java-wrapper?label=Version&style=for-the-badge
 
-<img alt="mc-market logo" align="right" src="https://github.com/MC-Market-org/mcmarket-api-java-wrapper/blob/assets/assets/icon-blue.png?raw=true" height="250" width="250">
+<img alt="mc-market logo" align="right" src="https://i.imgur.com/kYnUS4c.png?raw=true" height="200" width="200">
 
-[ ![jitpack][] ](https://jitpack.io/#MC-Market-org/mcmarket-api-java-wrapper)
-[ ![docs][] ](https://www.mc-market.org/wiki/ultimate-api/) 
+[ ![jitpack][] ](https://jitpack.io/#swanis/mcmarket-api-java-wrapper)
 # mcmarket-api-java-wrapper
 
 
