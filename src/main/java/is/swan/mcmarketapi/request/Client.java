@@ -2,7 +2,6 @@ package is.swan.mcmarketapi.request;
 
 import is.swan.mcmarketapi.Token;
 import is.swan.mcmarketapi.request.Request.Method;
-import is.swan.mcmarketapi.request.sorting.Throttler;
 import is.swan.mcmarketapi.utils.HTTPUtil;
 
 public class Client {

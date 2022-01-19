@@ -1,4 +1,4 @@
-package is.swan.mcmarketapi.request.sorting;
+package is.swan.mcmarketapi.request;
 
 import java.util.concurrent.atomic.AtomicLong;
 
