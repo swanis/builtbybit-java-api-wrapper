@@ -1,14 +1,17 @@
 package is.swan.mcmarketapi.request;
 
 import is.swan.mcmarketapi.Token;
+import is.swan.mcmarketapi.request.sorting.Throttler;
 import is.swan.mcmarketapi.utils.HTTPUtil;
 
 public class Client {
 
     private final Token token;
+    private final Throttler throttler;
 
     public Client(Token token) {
         this.token = token;
+        this.throttler = new Throttler();
     }
 
     public Response send(Request request) {
