@@ -2,27 +2,22 @@ package is.swan.mcmarketapi.request.sorting;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Throttler {
-	enum RequestType {
-		READ, WRITE 
-	}
-	
+import is.swan.mcmarketapi.request.Request.Method;
+
+public class Throttler {	
 	private final AtomicLong readLastRetry = new AtomicLong(0);
 	private final AtomicLong readLastRequest = new AtomicLong(System.currentTimeMillis());
 	
 	private final AtomicLong writeLastRetry = new AtomicLong(0);
 	private final AtomicLong writeLastRequest = new AtomicLong(System.currentTimeMillis());
 	
-	public long stallFor(RequestType type) {
+	public long stallFor(Method method) {
 	    long time = System.currentTimeMillis();
 	    
-	    switch (type) {
-	    	case READ:
-	    		return Throttler.stalForHelper(this.readLastRetry, this.readLastRequest, time);
-	    	case WRITE:
-	    		return Throttler.stalForHelper(this.writeLastRetry, this.writeLastRequest, time);
-	    	default:
-	    		return 0;
+	    if (method == Method.GET) {
+    		return Throttler.stalForHelper(this.readLastRetry, this.readLastRequest, time);
+	    } else {
+    		return Throttler.stalForHelper(this.writeLastRetry, this.writeLastRequest, time);
 	    }
 	}
 	
