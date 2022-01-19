@@ -1,6 +1,7 @@
 package is.swan.mcmarketapi.request;
 
 import is.swan.mcmarketapi.Token;
+import is.swan.mcmarketapi.request.Request.Method;
 import is.swan.mcmarketapi.request.sorting.Throttler;
 import is.swan.mcmarketapi.utils.HTTPUtil;
 
@@ -27,17 +28,32 @@ public class Client {
     }
 
     public Response sendOrWait(Request request) {
-        Response response = getResponse(request);
-
-        while (response.isRatelimited()) {
+    	long stallFor;
+    	while ((stallFor = this.throttler.stallFor(request.getMethod())) > 0) {
             try {
-                Thread.sleep(response.getMillisecondsToWait());
+                Thread.sleep(stallFor);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            response = getResponse(request);
+    	}
+    	
+        Response response = getResponse(request);
+        
+        if (response.isRatelimited()) {
+        	if (request.getMethod() == Method.GET) {
+        		throttler.setRead(response.getMillisecondsToWait());
+        	} else {
+        		throttler.setWrite(response.getMillisecondsToWait());	
+        	}
+        	
+        	return sendOrWait(request);
         }
+
+    	if (request.getMethod() == Method.GET) {
+    		throttler.resetRead();
+    	} else {
+    		throttler.resetWrite();
+    	}
 
         if (response.getError() != null) {
             return response;
