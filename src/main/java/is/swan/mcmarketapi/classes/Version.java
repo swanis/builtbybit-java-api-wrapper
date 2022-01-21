@@ -1,13 +1,13 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourceVersion {
+public class Version {
 
     private final int version_id, update_id;
     private final String name;
     private final long release_date;
     private final int download_count;
 
-    public ResourceVersion(int version_id, int update_id, String name, long release_date, int download_count) {
+    public Version(int version_id, int update_id, String name, long release_date, int download_count) {
         this.version_id = version_id;
         this.update_id = update_id;
         this.name = name;

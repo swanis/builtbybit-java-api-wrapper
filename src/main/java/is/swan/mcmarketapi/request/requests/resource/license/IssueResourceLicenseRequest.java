@@ -1,11 +1,12 @@
 package is.swan.mcmarketapi.request.requests.resource.license;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
 
-public class IssueResourceLicenseRequest implements Request<Void> {
+public class IssueResourceLicenseRequest implements Request<Integer> {
 
     private final int resourceId, purchaserId;
     private final long startDate, endDate;
@@ -43,5 +44,14 @@ public class IssueResourceLicenseRequest implements Request<Void> {
         parameters.put("site_url", siteUrl);
 
         return gson.toJson(parameters);
+    }
+
+    @Override
+    public Integer handleJson(String json) {
+        Gson gson = new Gson();
+        JsonElement element = gson.fromJson(json, JsonElement.class);
+        int id = element.getAsJsonObject().get("data").getAsInt();
+
+        return id;
     }
 }

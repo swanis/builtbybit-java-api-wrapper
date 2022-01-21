@@ -4,7 +4,10 @@ import is.swan.mcmarketapi.classes.Member;
 import is.swan.mcmarketapi.request.Client;
 import is.swan.mcmarketapi.request.Error;
 import is.swan.mcmarketapi.request.Response;
+import is.swan.mcmarketapi.request.requests.conversation.StartConversationRequest;
 import is.swan.mcmarketapi.request.requests.member.RetrieveYourselfRequest;
+
+import java.util.Arrays;
 
 public class Test {
 

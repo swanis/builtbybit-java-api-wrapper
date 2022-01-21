@@ -2,12 +2,12 @@ package is.swan.mcmarketapi.request.requests.resource.download;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceDownload;
+import is.swan.mcmarketapi.classes.Download;
 import is.swan.mcmarketapi.request.Request;
 import is.swan.mcmarketapi.request.sorting.SortOptions;
 import is.swan.mcmarketapi.utils.SortUtil;
 
-public class ListResourceDownloadsRequest implements Request<ResourceDownload[]> {
+public class ListResourceDownloadsRequest implements Request<Download[]> {
 
     private final int resourceId;
     private final SortOptions sortOptions;
@@ -28,11 +28,11 @@ public class ListResourceDownloadsRequest implements Request<ResourceDownload[]>
     }
 
     @Override
-    public ResourceDownload[] handleJson(String json) {
+    public Download[] handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceDownloadsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        ResourceDownload[] resourceDownloads = gson.fromJson(resourceDownloadsJson, ResourceDownload[].class);
+        Download[] resourceDownloads = gson.fromJson(resourceDownloadsJson, Download[].class);
 
         return resourceDownloads;
     }

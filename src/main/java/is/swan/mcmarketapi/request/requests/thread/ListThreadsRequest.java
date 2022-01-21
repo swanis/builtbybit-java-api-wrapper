@@ -2,12 +2,12 @@ package is.swan.mcmarketapi.request.requests.thread;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.Thread;
+import is.swan.mcmarketapi.classes.BasicThread;
 import is.swan.mcmarketapi.request.Request;
 import is.swan.mcmarketapi.request.sorting.SortOptions;
 import is.swan.mcmarketapi.utils.SortUtil;
 
-public class ListThreadsRequest implements Request<Thread[]> {
+public class ListThreadsRequest implements Request<BasicThread[]> {
 
     private final SortOptions sortOptions;
 
@@ -26,11 +26,11 @@ public class ListThreadsRequest implements Request<Thread[]> {
     }
 
     @Override
-    public Thread[] handleJson(String json) {
+    public BasicThread[] handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String threadsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Thread[] threads = gson.fromJson(threadsJson, Thread[].class);
+        BasicThread[] threads = gson.fromJson(threadsJson, BasicThread[].class);
 
         return threads;
     }

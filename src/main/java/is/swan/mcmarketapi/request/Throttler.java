@@ -4,7 +4,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import is.swan.mcmarketapi.request.Request.Method;
 
-public class Throttler {	
+public class Throttler {
+
 	private final AtomicLong readLastRetry = new AtomicLong(0);
 	private final AtomicLong readLastRequest = new AtomicLong(System.currentTimeMillis());
 	
@@ -15,13 +16,13 @@ public class Throttler {
 	    long time = System.currentTimeMillis();
 	    
 	    if (method == Method.GET) {
-    		return Throttler.stalForHelper(this.readLastRetry, this.readLastRequest, time);
+    		return Throttler.stallForHelper(this.readLastRetry, this.readLastRequest, time);
 	    } else {
-    		return Throttler.stalForHelper(this.writeLastRetry, this.writeLastRequest, time);
+    		return Throttler.stallForHelper(this.writeLastRetry, this.writeLastRequest, time);
 	    }
 	}
 	
-	private static long stalForHelper(AtomicLong aLastRetry, AtomicLong aLastRequest, long time){
+	private static long stallForHelper(AtomicLong aLastRetry, AtomicLong aLastRequest, long time){
 	    long lastRetry = aLastRetry.getAcquire();
 	    long lastRequest = aLastRequest.getAcquire();
 	    

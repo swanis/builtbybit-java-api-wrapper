@@ -3,21 +3,29 @@ package is.swan.mcmarketapi.classes;
 public class Thread {
 
     private final int thread_id;
-    private final String title;
+    private final String forum_name, title;
     private final int reply_count, view_count;
-    private final long creation_date, last_message_date;
+    private final long post_date;
+    private final boolean thread_open;
+    private final long last_post_date;
 
-    public Thread(int thread_id, String title, int reply_count, int view_count, long creation_date, long last_message_date) {
+    public Thread(int thread_id, String forum_name, String title, int reply_count, int view_count, long post_date, boolean thread_open, long last_post_date) {
         this.thread_id = thread_id;
+        this.forum_name = forum_name;
         this.title = title;
         this.reply_count = reply_count;
         this.view_count = view_count;
-        this.creation_date = creation_date;
-        this.last_message_date = last_message_date;
+        this.post_date = post_date;
+        this.thread_open = thread_open;
+        this.last_post_date = last_post_date;
     }
 
     public int getThreadId() {
         return thread_id;
+    }
+
+    public String getForumName() {
+        return forum_name;
     }
 
     public String getTitle() {
@@ -32,11 +40,15 @@ public class Thread {
         return view_count;
     }
 
-    public long getCreationDate() {
-        return creation_date;
+    public long getPostDate() {
+        return post_date;
     }
 
-    public long getLastMessageDate() {
-        return last_message_date;
+    public boolean isThreadOpen() {
+        return thread_open;
+    }
+
+    public long getLastPostDate() {
+        return last_post_date;
     }
 }

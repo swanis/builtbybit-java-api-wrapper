@@ -1,12 +1,12 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourceLicense {
+public class License {
 
     private final int license_id, purchaser_id;
     private final boolean validated, active;
     private final long start_date, end_date, previous_end_date;
 
-    public ResourceLicense(int license_id, int purchaser_id, boolean validated, boolean active, long start_date, long end_date, long previous_end_date) {
+    public License(int license_id, int purchaser_id, boolean validated, boolean active, long start_date, long end_date, long previous_end_date) {
         this.license_id = license_id;
         this.purchaser_id = purchaser_id;
         this.validated = validated;

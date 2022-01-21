@@ -1,6 +1,6 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourcePurchase {
+public class Purchase {
 
     private final int purchase_id, purchaser_id, license_id;
     private final boolean renewal;
@@ -9,7 +9,7 @@ public class ResourcePurchase {
     private final String currency;
     private final long purchase_date, validation_date;
 
-    public ResourcePurchase(int purchase_id, int purchaser_id, int license_id, boolean renewal, String status, double price, String currency, long purchase_date, long validation_date) {
+    public Purchase(int purchase_id, int purchaser_id, int license_id, boolean renewal, String status, double price, String currency, long purchase_date, long validation_date) {
         this.purchase_id = purchase_id;
         this.purchaser_id = purchaser_id;
         this.license_id = license_id;

@@ -2,12 +2,12 @@ package is.swan.mcmarketapi.request.requests.resource.license;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceLicense;
+import is.swan.mcmarketapi.classes.License;
 import is.swan.mcmarketapi.request.Request;
 import is.swan.mcmarketapi.request.sorting.SortOptions;
 import is.swan.mcmarketapi.utils.SortUtil;
 
-public class ListResourceLicensesRequest implements Request<ResourceLicense[]> {
+public class ListResourceLicensesRequest implements Request<License[]> {
 
     private final int resourceId;
     private final SortOptions sortOptions;
@@ -28,11 +28,11 @@ public class ListResourceLicensesRequest implements Request<ResourceLicense[]> {
     }
 
     @Override
-    public ResourceLicense[] handleJson(String json) {
+    public License[] handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceLicensesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        ResourceLicense[] resourceLicenses = gson.fromJson(resourceLicensesJson, ResourceLicense[].class);
+        License[] resourceLicenses = gson.fromJson(resourceLicensesJson, License[].class);
 
         return resourceLicenses;
     }

@@ -2,12 +2,12 @@ package is.swan.mcmarketapi.request.requests.resource.version;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceVersion;
+import is.swan.mcmarketapi.classes.Version;
 import is.swan.mcmarketapi.request.Request;
 import is.swan.mcmarketapi.request.sorting.SortOptions;
 import is.swan.mcmarketapi.utils.SortUtil;
 
-public class ListResourceVersionsRequest implements Request<ResourceVersion[]> {
+public class ListResourceVersionsRequest implements Request<Version[]> {
 
     private final int resourceId;
     private final SortOptions sortOptions;
@@ -28,11 +28,11 @@ public class ListResourceVersionsRequest implements Request<ResourceVersion[]> {
     }
 
     @Override
-    public ResourceVersion[] handleJson(String json) {
+    public Version[] handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceVersionsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        ResourceVersion[] resourceVersions = gson.fromJson(resourceVersionsJson, ResourceVersion[].class);
+        Version[] resourceVersions = gson.fromJson(resourceVersionsJson, Version[].class);
 
         return resourceVersions;
     }

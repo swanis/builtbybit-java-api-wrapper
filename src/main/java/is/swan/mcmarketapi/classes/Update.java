@@ -1,13 +1,13 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourceUpdate {
+public class Update {
 
     private final int update_id;
     private final String title, message;
     private final long update_date;
     private final int like_count;
 
-    public ResourceUpdate(int update_id, String title, String message, long update_date, int like_count) {
+    public Update(int update_id, String title, String message, long update_date, int like_count) {
         this.update_id = update_id;
         this.title = title;
         this.message = message;

@@ -1,6 +1,6 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourceReview {
+public class Review {
 
     private final int review_id, resource_id, version_id;
     private final String version_name;
@@ -10,7 +10,7 @@ public class ResourceReview {
     private final int rating;
     private final String message, author_response;
 
-    public ResourceReview(int review_id, int resource_id, int version_id, String version_name, int reviewer_id, long review_date, boolean deleted, int rating, String message, String author_response) {
+    public Review(int review_id, int resource_id, int version_id, String version_name, int reviewer_id, long review_date, boolean deleted, int rating, String message, String author_response) {
         this.review_id = review_id;
         this.resource_id = resource_id;
         this.version_id = version_id;

@@ -2,10 +2,10 @@ package is.swan.mcmarketapi.request.requests.resource.review;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceReview;
+import is.swan.mcmarketapi.classes.Review;
 import is.swan.mcmarketapi.request.Request;
 
-public class RetrieveMemberResourceReviewRequest implements Request<ResourceReview> {
+public class RetrieveMemberResourceReviewRequest implements Request<Review> {
 
     private final int resourceId, memberId;
 
@@ -25,11 +25,11 @@ public class RetrieveMemberResourceReviewRequest implements Request<ResourceRevi
     }
 
     @Override
-    public ResourceReview handleJson(String json) {
+    public Review handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceReviewJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        ResourceReview resourceReview = gson.fromJson(resourceReviewJson, ResourceReview.class);
+        Review resourceReview = gson.fromJson(resourceReviewJson, Review.class);
 
         return resourceReview;
     }

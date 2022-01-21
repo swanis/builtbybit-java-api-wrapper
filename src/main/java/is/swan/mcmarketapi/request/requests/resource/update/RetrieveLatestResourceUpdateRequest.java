@@ -2,10 +2,10 @@ package is.swan.mcmarketapi.request.requests.resource.update;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceUpdate;
+import is.swan.mcmarketapi.classes.Update;
 import is.swan.mcmarketapi.request.Request;
 
-public class RetrieveLatestResourceUpdateRequest implements Request<ResourceUpdate> {
+public class RetrieveLatestResourceUpdateRequest implements Request<Update> {
 
     private final int resourceId;
 
@@ -24,11 +24,11 @@ public class RetrieveLatestResourceUpdateRequest implements Request<ResourceUpda
     }
 
     @Override
-    public ResourceUpdate handleJson(String json) {
+    public Update handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceUpdateJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        ResourceUpdate resourceUpdate = gson.fromJson(resourceUpdateJson, ResourceUpdate.class);
+        Update resourceUpdate = gson.fromJson(resourceUpdateJson, Update.class);
 
         return resourceUpdate;
     }

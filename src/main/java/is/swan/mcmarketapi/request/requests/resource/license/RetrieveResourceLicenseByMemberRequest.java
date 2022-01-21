@@ -2,10 +2,10 @@ package is.swan.mcmarketapi.request.requests.resource.license;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.ResourceLicense;
+import is.swan.mcmarketapi.classes.License;
 import is.swan.mcmarketapi.request.Request;
 
-public class RetrieveResourceLicenseByMemberRequest implements Request<ResourceLicense> {
+public class RetrieveResourceLicenseByMemberRequest implements Request<License> {
 
     private final int resourceId, memberId, nonce;
     private final long timestamp;
@@ -28,11 +28,11 @@ public class RetrieveResourceLicenseByMemberRequest implements Request<ResourceL
     }
 
     @Override
-    public ResourceLicense handleJson(String json) {
+    public License handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceLicenseJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        ResourceLicense resourceLicense = gson.fromJson(resourceLicenseJson, ResourceLicense.class);
+        License resourceLicense = gson.fromJson(resourceLicenseJson, License.class);
 
         return resourceLicense;
     }

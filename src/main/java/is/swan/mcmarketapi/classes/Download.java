@@ -1,11 +1,11 @@
 package is.swan.mcmarketapi.classes;
 
-public class ResourceDownload {
+public class Download {
 
     private final int resource_id, version_id, downloader_id;
     private final long download_date;
 
-    public ResourceDownload(int resource_id, int version_id, int downloader_id, long download_date) {
+    public Download(int resource_id, int version_id, int downloader_id, long download_date) {
         this.resource_id = resource_id;
         this.version_id = version_id;
         this.downloader_id = downloader_id;

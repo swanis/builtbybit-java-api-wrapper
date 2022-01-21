@@ -2,10 +2,10 @@ package is.swan.mcmarketapi.request.requests.thread;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.DetailedThread;
+import is.swan.mcmarketapi.classes.Thread;
 import is.swan.mcmarketapi.request.Request;
 
-public class FetchThreadRequest implements Request<DetailedThread> {
+public class FetchThreadRequest implements Request<Thread> {
 
     private final int threadId;
 
@@ -24,11 +24,11 @@ public class FetchThreadRequest implements Request<DetailedThread> {
     }
 
     @Override
-    public DetailedThread handleJson(String json) {
+    public Thread handleJson(String json) {
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String detailedThreadJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        DetailedThread detailedThread = gson.fromJson(detailedThreadJson, DetailedThread.class);
+        Thread detailedThread = gson.fromJson(detailedThreadJson, Thread.class);
 
         return detailedThread;
     }
