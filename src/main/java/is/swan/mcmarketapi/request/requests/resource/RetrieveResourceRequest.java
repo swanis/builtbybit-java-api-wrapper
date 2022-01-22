@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Resource;
 import is.swan.mcmarketapi.request.Request;
@@ -25,7 +24,6 @@ public class RetrieveResourceRequest implements Request<Resource> {
 
     @Override
     public Resource handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String detailedResourceJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
         Resource detailedResource = gson.fromJson(detailedResourceJson, Resource.class);

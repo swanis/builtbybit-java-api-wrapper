@@ -2,7 +2,6 @@ package is.swan.mcmarketapi.request.requests.conversation;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import is.swan.mcmarketapi.classes.Conversation;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
@@ -30,7 +29,6 @@ public class StartConversationRequest implements Request<Integer> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, Object> parameters = new HashMap<>();
 
         parameters.put("recipient_ids", recipientIds);
@@ -42,7 +40,6 @@ public class StartConversationRequest implements Request<Integer> {
 
     @Override
     public Integer handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         int id = element.getAsJsonObject().get("data").getAsInt();
 

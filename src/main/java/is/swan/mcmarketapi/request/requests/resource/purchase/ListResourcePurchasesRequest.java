@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.purchase;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Purchase;
 import is.swan.mcmarketapi.request.Request;
@@ -29,7 +28,6 @@ public class ListResourcePurchasesRequest implements Request<Purchase[]> {
 
     @Override
     public Purchase[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourcePurchasesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         Purchase[] resourcePurchases = gson.fromJson(resourcePurchasesJson, Purchase[].class);

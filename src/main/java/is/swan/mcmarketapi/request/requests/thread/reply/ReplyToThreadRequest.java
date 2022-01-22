@@ -28,7 +28,6 @@ public class ReplyToThreadRequest implements Request<Integer> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, String> parameters = new HashMap<>();
 
         parameters.put("message", message);
@@ -38,7 +37,6 @@ public class ReplyToThreadRequest implements Request<Integer> {
 
     @Override
     public Integer handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         int id = element.getAsJsonObject().get("data").getAsInt();
 

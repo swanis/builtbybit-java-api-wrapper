@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.review;
 
-import com.google.gson.Gson;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
@@ -8,12 +7,12 @@ import java.util.HashMap;
 public class RespondToResourceReviewRequest implements Request<Void> {
 
     private final int resourceId, reviewId;
-    private final String message;
+    private final String response;
 
-    public RespondToResourceReviewRequest(int resourceId, int reviewId, String message) {
+    public RespondToResourceReviewRequest(int resourceId, int reviewId, String response) {
         this.resourceId = resourceId;
         this.reviewId = reviewId;
-        this.message = message;
+        this.response = response;
     }
 
     @Override
@@ -28,10 +27,9 @@ public class RespondToResourceReviewRequest implements Request<Void> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, String> parameters = new HashMap<>();
 
-        parameters.put("message", message);
+        parameters.put("response", response);
 
         return gson.toJson(parameters);
     }

@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.member.profilepost;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.ProfilePost;
 import is.swan.mcmarketapi.request.Request;
@@ -25,7 +24,6 @@ public class RetrieveSpecificProfilePostRequest implements Request<ProfilePost> 
 
     @Override
     public ProfilePost handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String profilePostJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
         ProfilePost profilePost = gson.fromJson(profilePostJson, ProfilePost.class);

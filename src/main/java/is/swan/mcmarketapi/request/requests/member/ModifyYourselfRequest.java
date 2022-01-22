@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.member;
 
-import com.google.gson.Gson;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
@@ -27,7 +26,6 @@ public class ModifyYourselfRequest implements Request<Void> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, String> parameters = new HashMap<>();
 
         if (customTitle != null) {

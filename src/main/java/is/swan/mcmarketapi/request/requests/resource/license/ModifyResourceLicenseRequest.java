@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.license;
 
-import com.google.gson.Gson;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
@@ -8,15 +7,16 @@ import java.util.HashMap;
 public class ModifyResourceLicenseRequest implements Request<Void> {
 
     private final int resourceId, licenseId;
+    private final boolean permanent, active;
     private final long startDate, endDate;
-    private final boolean active;
 
-    public ModifyResourceLicenseRequest(int resourceId, int licenseId, long startDate, long endDate, boolean active) {
+    public ModifyResourceLicenseRequest(int resourceId, int licenseId, boolean permanent, boolean active, long startDate, long endDate) {
         this.resourceId = resourceId;
         this.licenseId = licenseId;
+        this.permanent = permanent;
+        this.active = active;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.active = active;
     }
 
     @Override
@@ -31,12 +31,12 @@ public class ModifyResourceLicenseRequest implements Request<Void> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, Object> parameters = new HashMap<>();
 
+        parameters.put("permanent", permanent);
+        parameters.put("active", active);
         parameters.put("start_date", startDate);
         parameters.put("end_date", endDate);
-        parameters.put("active", active);
 
         return gson.toJson(parameters);
     }

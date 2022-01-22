@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.alert;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Alert;
 import is.swan.mcmarketapi.request.Request;
@@ -27,7 +26,6 @@ public class ListUnreadAlertsRequest implements Request<Alert[]> {
 
     @Override
     public Alert[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String alertsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         Alert[] alerts = gson.fromJson(alertsJson, Alert[].class);

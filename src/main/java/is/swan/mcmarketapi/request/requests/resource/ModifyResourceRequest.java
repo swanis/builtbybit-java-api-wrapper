@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource;
 
-import com.google.gson.Gson;
 import is.swan.mcmarketapi.request.Request;
 
 import java.util.HashMap;
@@ -29,7 +28,6 @@ public class ModifyResourceRequest implements Request<Void> {
 
     @Override
     public String getBody() {
-        Gson gson = new Gson();
         HashMap<String, String> parameters = new HashMap<>();
 
         if (title != null) {

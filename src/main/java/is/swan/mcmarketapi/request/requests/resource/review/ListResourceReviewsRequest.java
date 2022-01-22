@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.review;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Review;
 import is.swan.mcmarketapi.request.Request;
@@ -29,7 +28,6 @@ public class ListResourceReviewsRequest implements Request<Review[]> {
 
     @Override
     public Review[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceReviewsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         Review[] resourceReviews = gson.fromJson(resourceReviewsJson, Review[].class);

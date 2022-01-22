@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.conversation.reply;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Reply;
 import is.swan.mcmarketapi.request.Request;
@@ -29,7 +28,6 @@ public class ListUnreadConversationRepliesRequest implements Request<Reply[]> {
 
     @Override
     public Reply[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String conversationRepliesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         Reply[] conversationReplies = gson.fromJson(conversationRepliesJson, Reply[].class);

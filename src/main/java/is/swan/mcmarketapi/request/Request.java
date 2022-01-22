@@ -1,6 +1,10 @@
 package is.swan.mcmarketapi.request;
 
+import com.google.gson.Gson;
+
 public interface Request<V> {
+
+    Gson gson = new Gson();
 
     String getURL();
     Method getMethod();

@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.version;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Version;
 import is.swan.mcmarketapi.request.Request;
@@ -26,7 +25,6 @@ public class RetrieveResourceVersionRequest implements Request<Version> {
 
     @Override
     public Version handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceVersionJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
         Version resourceVersion = gson.fromJson(resourceVersionJson, Version.class);

@@ -15,6 +15,7 @@ import java.net.http.HttpResponse;
 public class HTTPUtil {
 
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
+    private static final Gson GSON = new Gson();
 
     public static Response<String> get(String url, Token token) {
         HttpRequest request = HttpRequest.newBuilder()
@@ -88,13 +89,12 @@ public class HTTPUtil {
             response.setRatelimited(true);
             response.setMillisecondsToWait(Integer.parseInt(httpResponse.headers().firstValue("Retry-After").get()));
         } else {
-            Gson gson = new Gson();
-            JsonElement element = gson.fromJson(httpResponse.body(), JsonElement.class);
+            JsonElement element = GSON.fromJson(httpResponse.body(), JsonElement.class);
             String result = element.getAsJsonObject().get("result").getAsString();
 
             if (result.equals("error")) {
                 String errorJson = element.getAsJsonObject().get("error").getAsJsonObject().toString();
-                Error error = gson.fromJson(errorJson, Error.class);
+                Error error = GSON.fromJson(errorJson, Error.class);
 
                 response.setError(error);
             }

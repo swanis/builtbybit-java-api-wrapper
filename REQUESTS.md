@@ -39,10 +39,10 @@ ListResourceDownloadsByVersionRequest(int resourceId, int versionId, SortOptions
 ListResourceDownloadsRequest(int resourceId, SortOptions sortOptions) (Download[])
 
 ## Resource Licenses
-IssueResourceLicenseRequest(int resourceId, int purchaserId, long startDate, long endDate, boolean active, String siteUrl) (Integer)  
+IssueResourceLicenseRequest(int resourceId, boolean permanent, boolean active, int purchaserId, long startDate, long endDate) (Integer)  
 ListResourceLicensesRequest(int resourceId, SortOptions sortOptions) (License[])  
-ModifyResourceLicenseRequest(int resourceId, int licenseId, long startDate, long endDate, boolean active) (Void)  
-RetrieveResourceLicenseRequest(int resourceId, int licenseId) (License)
+ModifyResourceLicenseRequest(int resourceId, int licenseId, boolean permanent, boolean active, long startDate, long endDate) (Void)  
+RetrieveResourceLicenseRequest(int resourceId, int licenseId) (License)  
 RetrieveResourceLicenseByMemberRequest(int resourceId, int memberId, int nonce, long timestamp) (License)
 
 ## Resource Purchases

@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.BasicResource;
 import is.swan.mcmarketapi.request.Request;
@@ -27,7 +26,6 @@ public class ListCollaboratedResourcesRequest implements Request<BasicResource[]
 
     @Override
     public BasicResource[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourcesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         BasicResource[] resources = gson.fromJson(resourcesJson, BasicResource[].class);

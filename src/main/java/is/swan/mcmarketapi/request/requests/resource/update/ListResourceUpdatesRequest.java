@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.resource.update;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.classes.Update;
 import is.swan.mcmarketapi.request.Request;
@@ -29,7 +28,6 @@ public class ListResourceUpdatesRequest implements Request<Update[]> {
 
     @Override
     public Update[] handleJson(String json) {
-        Gson gson = new Gson();
         JsonElement element = gson.fromJson(json, JsonElement.class);
         String resourceUpdatesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
         Update[] resourceUpdates = gson.fromJson(resourceUpdatesJson, Update[].class);
