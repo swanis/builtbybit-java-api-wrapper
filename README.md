@@ -30,12 +30,12 @@ Sorting is possible by passing a SortOptions object into the constructor of supp
 ```java
 //Example printing the 20 top-purchased resources.
 Client client = new Client(new Token("TOKEN STRING", Token.Type.PRIVATE));
-Response<Resource[]> response = client.sendOrWait(new ListPublicResourcesRequest(new SortOptions("purchase_count", Order.DESCENDING, 1)));
+Response<BasicResource[]> response = client.sendOrWait(new ListPublicResourcesRequest(new SortOptions("purchase_count", Order.DESCENDING, 1)));
 
 if (response.getError() == null) {
-    Resource[] resources = response.getValue();
+    BasicResource[] resources = response.getValue();
 
-    for (Resource resource : resources) {
+    for (BasicResource resource : resources) {
         System.out.println(resource.getTitle());
     }
 } else {
@@ -43,7 +43,7 @@ if (response.getError() == null) {
     System.out.println(error.getCode() + ": " + error.getMessage());
 }
 ```
-Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/ultimate-api/).
+Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/v1-endpoints/).
 
 # Jitpack Installation
 ## Gradle
