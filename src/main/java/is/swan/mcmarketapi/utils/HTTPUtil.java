@@ -2,9 +2,9 @@ package is.swan.mcmarketapi.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import is.swan.mcmarketapi.Token;
 import is.swan.mcmarketapi.request.Error;
 import is.swan.mcmarketapi.request.Response;
-import is.swan.mcmarketapi.Token;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,7 +17,7 @@ public class HTTPUtil {
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
     private static final Gson GSON = new Gson();
 
-    public static Response<String> get(String url, Token token) {
+    public static <V> Response<V> get(String url, Token token) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Authorization", token.toString())
@@ -28,11 +28,11 @@ public class HTTPUtil {
 
             return getResponse(httpResponse);
         } catch (IOException | InterruptedException e) {
-            return new Response<>("").setError(new Error(e.getClass().getName(), e.getMessage()));
+            return new Response<V>("").setError(new Error(e.getClass().getName(), e.getMessage()));
         }
     }
 
-    public static Response<String> post(String url, String body, Token token) {
+    public static <V> Response<V> post(String url, String body, Token token) {
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .uri(URI.create(url))
@@ -45,11 +45,11 @@ public class HTTPUtil {
 
             return getResponse(httpResponse);
         } catch (IOException | InterruptedException e) {
-            return new Response<>("").setError(new Error(e.getClass().getName(), e.getMessage()));
+            return new Response<V>("").setError(new Error(e.getClass().getName(), e.getMessage()));
         }
     }
 
-    public static Response<String> delete(String url, Token token) {
+    public static <V> Response<V> delete(String url, Token token) {
         HttpRequest request = HttpRequest.newBuilder()
                 .DELETE()
                 .uri(URI.create(url))
@@ -61,11 +61,11 @@ public class HTTPUtil {
 
             return getResponse(httpResponse);
         } catch (IOException | InterruptedException e) {
-            return new Response<>("").setError(new Error(e.getClass().getName(), e.getMessage()));
+            return new Response<V>("").setError(new Error(e.getClass().getName(), e.getMessage()));
         }
     }
 
-    public static Response<String> patch(String url, String body, Token token) {
+    public static <V> Response<V> patch(String url, String body, Token token) {
         HttpRequest request = HttpRequest.newBuilder()
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(body))
                 .uri(URI.create(url))
@@ -78,12 +78,12 @@ public class HTTPUtil {
 
             return getResponse(httpResponse);
         } catch (IOException | InterruptedException e) {
-            return new Response<>("").setError(new Error(e.getClass().getName(), e.getMessage()));
+            return new Response<V>("").setError(new Error(e.getClass().getName(), e.getMessage()));
         }
     }
 
-    private static Response<String> getResponse(HttpResponse<String> httpResponse) {
-        Response<String> response = new Response<>(httpResponse.body());
+    private static <V> Response<V> getResponse(HttpResponse<String> httpResponse) {
+        Response<V> response = new Response<>(httpResponse.body());
 
         if (httpResponse.headers().firstValue("Retry-After").isPresent()) {
             response.setRatelimited(true);

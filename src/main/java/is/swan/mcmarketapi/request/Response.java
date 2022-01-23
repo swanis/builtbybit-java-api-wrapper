@@ -2,13 +2,19 @@ package is.swan.mcmarketapi.request;
 
 public class Response<V> {
 
+    private final String json;
+
     private V value;
     private boolean ratelimited;
     private int millisecondsToWait;
     private Error error;
 
-    public Response(V value) {
-        this.value = value;
+    public Response(String json) {
+        this.json = json;
+    }
+
+    public String getJson() {
+        return json;
     }
 
     public V getValue() {
@@ -39,7 +45,7 @@ public class Response<V> {
         return error;
     }
 
-    public Response setError(Error error) {
+    public Response<V> setError(Error error) {
         this.error = error;
         return this;
     }

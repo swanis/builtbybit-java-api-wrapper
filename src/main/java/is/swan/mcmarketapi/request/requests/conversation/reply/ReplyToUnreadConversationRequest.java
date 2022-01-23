@@ -1,6 +1,5 @@
 package is.swan.mcmarketapi.request.requests.conversation.reply;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import is.swan.mcmarketapi.request.Request;
 

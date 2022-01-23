@@ -14,19 +14,19 @@ public class Client {
         this.throttler = new Throttler();
     }
 
-    public Response send(Request request) {
-        Response response = getResponse(request);
+    public <V> Response<V> send(Request<V> request) {
+        Response<V> response = getResponse(request);
 
         if (response.isRatelimited() || response.getError() != null) {
             return response;
         }
 
-        response.setValue(request.handleJson((String) response.getValue()));
+        response.setValue(request.handleJson(response.getJson()));
 
         return response;
     }
 
-    public Response sendOrWait(Request request) {
+    public <V> Response<V> sendOrWait(Request<V> request) {
     	long stallFor;
     	while ((stallFor = this.throttler.stallFor(request.getMethod())) > 0) {
             try {
@@ -36,7 +36,7 @@ public class Client {
             }
     	}
     	
-        Response response = getResponse(request);
+        Response<V> response = getResponse(request);
         
         if (response.isRatelimited()) {
         	if (request.getMethod() == Method.GET) {
@@ -58,12 +58,12 @@ public class Client {
             return response;
         }
 
-        response.setValue(request.handleJson((String) response.getValue()));
+        response.setValue(request.handleJson(response.getJson()));
 
         return response;
     }
 
-    private Response getResponse(Request request) {
+    private <V> Response<V> getResponse(Request<V> request) {
         return switch(request.getMethod()) {
             case GET -> HTTPUtil.get(request.getURL(), token);
             case POST -> HTTPUtil.post(request.getURL(), request.getBody(), token);
