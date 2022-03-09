@@ -18,6 +18,7 @@ ListBansRequest (Ban[])
 ModifyYourselfRequest(String customTitle, String aboutMe, String signature) (Void)  
 RetrieveMemberByIDRequest(int memberId) (Member)  
 RetrieveMemberByUsernameRequest(String username) (Member)  
+RetrieveMemberByDiscordIDRequest(long discordId) (Member)  
 RetrieveYourselfRequest (Member)
 
 ## Profile Posts
@@ -39,7 +40,6 @@ ListResourceDownloadsByVersionRequest(int resourceId, int versionId, SortOptions
 ListResourceDownloadsRequest(int resourceId, SortOptions sortOptions) (Download[])
 
 ## Resource Licenses
-IssueResourceLicenseRequest(int resourceId, boolean permanent, boolean active, int purchaserId, long startDate, long endDate) (Integer)  
 ListResourceLicensesRequest(int resourceId, SortOptions sortOptions) (License[])  
 ModifyResourceLicenseRequest(int resourceId, int licenseId, boolean permanent, boolean active, long startDate, long endDate) (Void)  
 RetrieveResourceLicenseRequest(int resourceId, int licenseId) (License)  

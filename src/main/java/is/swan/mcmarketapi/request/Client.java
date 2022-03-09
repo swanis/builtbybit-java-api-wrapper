@@ -27,32 +27,32 @@ public class Client {
     }
 
     public <V> Response<V> sendOrWait(Request<V> request) {
-    	long stallFor;
-    	while ((stallFor = this.throttler.stallFor(request.getMethod())) > 0) {
+        long stallFor;
+        while ((stallFor = this.throttler.stallFor(request.getMethod())) > 0) {
             try {
                 Thread.sleep(stallFor);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-    	}
-    	
-        Response<V> response = getResponse(request);
-        
-        if (response.isRatelimited()) {
-        	if (request.getMethod() == Method.GET) {
-        		throttler.setRead(response.getMillisecondsToWait());
-        	} else {
-        		throttler.setWrite(response.getMillisecondsToWait());	
-        	}
-        	
-        	return sendOrWait(request);
         }
 
-    	if (request.getMethod() == Method.GET) {
-    		throttler.resetRead();
-    	} else {
-    		throttler.resetWrite();
-    	}
+        Response<V> response = getResponse(request);
+
+        if (response.isRatelimited()) {
+            if (request.getMethod() == Method.GET) {
+                throttler.setRead(response.getMillisecondsToWait());
+            } else {
+                throttler.setWrite(response.getMillisecondsToWait());
+            }
+
+            return sendOrWait(request);
+        }
+
+        if (request.getMethod() == Method.GET) {
+            throttler.resetRead();
+        } else {
+            throttler.resetWrite();
+        }
 
         if (response.getError() != null) {
             return response;
@@ -64,7 +64,7 @@ public class Client {
     }
 
     private <V> Response<V> getResponse(Request<V> request) {
-        return switch(request.getMethod()) {
+        return switch (request.getMethod()) {
             case GET -> HTTPUtil.get(request.getURL(), token);
             case POST -> HTTPUtil.post(request.getURL(), request.getBody(), token);
             case DELETE -> HTTPUtil.delete(request.getURL(), token);
