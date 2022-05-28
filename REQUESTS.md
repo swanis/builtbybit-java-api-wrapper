@@ -31,6 +31,7 @@ RetrieveSpecificProfilePostRequest(int profilePostId) (ProfilePost)
 ListOwnedResourcesRequest(SortOptions sortOptions) (BasicResource[])  
 ListPublicResourcesRequest(SortOptions sortOptions) (BasicResource[])  
 ListCollaboratedResourcesRequest(SortOptions sortOptions) (BasicResource[])  
+ListResourcesByAuthor(int userId, SortOptions sortOptions) (BasicResource[])  
 ModifyResourceRequest(int resourceId, String title, String tag_line, String description) (Void)  
 RetrieveResourceRequest(int resourceId) (Resource)
 
