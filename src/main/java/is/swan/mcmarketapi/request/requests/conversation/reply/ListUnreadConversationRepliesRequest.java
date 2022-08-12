@@ -18,7 +18,7 @@ public class ListUnreadConversationRepliesRequest implements Request<Reply[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/conversations/" + conversationId + "/replies" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/conversations/" + conversationId + "/replies" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListUnreadConversationRepliesRequest implements Request<Reply[]> {
 
     @Override
     public Reply[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String conversationRepliesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Reply[] conversationReplies = gson.fromJson(conversationRepliesJson, Reply[].class);
+        Reply[] conversationReplies = GSON.fromJson(conversationRepliesJson, Reply[].class);
 
         return conversationReplies;
     }

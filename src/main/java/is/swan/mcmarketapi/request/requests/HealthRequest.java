@@ -8,7 +8,7 @@ public class HealthRequest implements Request<String> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/health";
+        return BASE_URL + "/health";
     }
 
     @Override
@@ -18,7 +18,7 @@ public class HealthRequest implements Request<String> {
 
     @Override
     public String handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         JsonObject jsonObject = element.getAsJsonObject();
 
         return jsonObject.get("data").getAsString();

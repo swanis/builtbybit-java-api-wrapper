@@ -16,7 +16,7 @@ public class ModifyYourselfRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/self";
+        return BASE_URL + "/members/self";
     }
 
     @Override
@@ -40,6 +40,6 @@ public class ModifyYourselfRequest implements Request<Void> {
             parameters.put("signature", signature);
         }
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }

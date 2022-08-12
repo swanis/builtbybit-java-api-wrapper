@@ -15,7 +15,7 @@ public class RetrieveResourcePurchaseRequest implements Request<Purchase> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/purchases/" + purchaseId;
+        return BASE_URL + "/resources/" + resourceId + "/purchases/" + purchaseId;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class RetrieveResourcePurchaseRequest implements Request<Purchase> {
 
     @Override
     public Purchase handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourcePurchaseJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        Purchase resourcePurchase = gson.fromJson(resourcePurchaseJson, Purchase.class);
+        Purchase resourcePurchase = GSON.fromJson(resourcePurchaseJson, Purchase.class);
 
         return resourcePurchase;
     }

@@ -4,7 +4,8 @@ import com.google.gson.Gson;
 
 public interface Request<V> {
 
-    Gson gson = new Gson();
+    String BASE_URL = "https://api.builtbybit.com/v1";
+    Gson GSON = new Gson();
 
     String getURL();
     Method getMethod();

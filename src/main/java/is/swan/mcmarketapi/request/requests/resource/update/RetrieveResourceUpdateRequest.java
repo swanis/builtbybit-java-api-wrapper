@@ -15,7 +15,7 @@ public class RetrieveResourceUpdateRequest implements Request<Update> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/updates/" + updateId;
+        return BASE_URL + "/resources/" + resourceId + "/updates/" + updateId;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class RetrieveResourceUpdateRequest implements Request<Update> {
 
     @Override
     public Update handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceUpdateJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        Update resourceUpdate = gson.fromJson(resourceUpdateJson, Update.class);
+        Update resourceUpdate = GSON.fromJson(resourceUpdateJson, Update.class);
 
         return resourceUpdate;
     }

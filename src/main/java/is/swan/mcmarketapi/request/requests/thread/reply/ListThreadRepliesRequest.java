@@ -18,7 +18,7 @@ public class ListThreadRepliesRequest implements Request<Reply[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/threads/" + threadId + "/replies" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/threads/" + threadId + "/replies" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListThreadRepliesRequest implements Request<Reply[]> {
 
     @Override
     public Reply[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String threadRepliesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Reply[] threadReplies = gson.fromJson(threadRepliesJson, Reply[].class);
+        Reply[] threadReplies = GSON.fromJson(threadRepliesJson, Reply[].class);
 
         return threadReplies;
     }

@@ -1,12 +1,12 @@
 [jitpack]: https://img.shields.io/jitpack/v/github/swanis/mcmarket-api-java-wrapper?label=Version&style=for-the-badge
 
-<a href="https://mc-market.org/"><img alt="mc-market logo" align="right" src="https://i.imgur.com/kYnUS4c.png?raw=true" height="200" width="200"></a>
+<a href="https://builtbybit.com/"><img alt="builtbybit logo" align="right" src="https://raw.githubusercontent.com/swanis/builtbybit-java-api-wrapper/main/assets/icon-blue.png" height="200" width="200"></a>
 
-[ ![jitpack][] ](https://jitpack.io/#swanis/mcmarket-api-java-wrapper)
-# mcmarket-api-java-wrapper
+[ ![jitpack][] ](https://jitpack.io/#swanis/builtbybit-java-api-wrapper)
+# builtbybit-java-api-wrapper
 
 
-This is a complete and easy-to-use Java wrapper for the [MC-Market Ultimate API](https://www.mc-market.org/wiki/ultimate-api/) built with Java SE Development Kit 17.0.1.
+This is a complete and easy-to-use Java wrapper for the [BuiltByBit Ultimate API](https://builtbybit.com/wiki/ultimate-api/) built with Java SE Development Kit 17.0.1.
 
 # Sending a request
 ```java
@@ -43,7 +43,7 @@ if (response.getError() == null) {
     System.out.println(error.getCode() + ": " + error.getMessage());
 }
 ```
-Sortable fields can be found at the official API documentation [here](https://www.mc-market.org/wiki/v1-endpoints/).
+Sortable fields can be found at the official API documentation [here](https://builtbybit.com/wiki/v1-endpoints/).
 
 # Jitpack Installation
 ## Gradle
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.swanis:mcmarket-api-java-wrapper:VERSION'
+    implementation 'com.github.swanis:builtbybit-java-api-wrapper:VERSION'
 }
 ```
 
@@ -68,7 +68,7 @@ dependencies {
 
 <dependency>
     <groupId>com.github.swanis</groupId>
-    <artifactId>mcmarket-api-java-wrapper</artifactId>
+    <artifactId>builtbybit-java-api-wrapper</artifactId>
     <version>VERSION</version>
 </dependency>
 ```

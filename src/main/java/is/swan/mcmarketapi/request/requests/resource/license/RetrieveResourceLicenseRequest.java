@@ -15,7 +15,7 @@ public class RetrieveResourceLicenseRequest implements Request<License> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/licenses/" + licenseId;
+        return BASE_URL + "/resources/" + resourceId + "/licenses/" + licenseId;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class RetrieveResourceLicenseRequest implements Request<License> {
 
     @Override
     public License handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceLicenseJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        License resourceLicense = gson.fromJson(resourceLicenseJson, License.class);
+        License resourceLicense = GSON.fromJson(resourceLicenseJson, License.class);
 
         return resourceLicense;
     }

@@ -14,7 +14,7 @@ public class MarkUnreadAlertsAsReadRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/alerts";
+        return BASE_URL + "/alerts";
     }
 
     @Override
@@ -28,6 +28,6 @@ public class MarkUnreadAlertsAsReadRequest implements Request<Void> {
 
         parameters.put("read", read);
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }

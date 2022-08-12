@@ -16,7 +16,7 @@ public class ListProfilePostsRequest implements Request<ProfilePost[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/self/profile-posts" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/members/self/profile-posts" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -26,9 +26,9 @@ public class ListProfilePostsRequest implements Request<ProfilePost[]> {
 
     @Override
     public ProfilePost[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String profilePostsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        ProfilePost[] profilePosts = gson.fromJson(profilePostsJson, ProfilePost[].class);
+        ProfilePost[] profilePosts = GSON.fromJson(profilePostsJson, ProfilePost[].class);
 
         return profilePosts;
     }

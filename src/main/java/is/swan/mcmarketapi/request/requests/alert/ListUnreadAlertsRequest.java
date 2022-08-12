@@ -16,7 +16,7 @@ public class ListUnreadAlertsRequest implements Request<Alert[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/alerts" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/alerts" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -26,9 +26,9 @@ public class ListUnreadAlertsRequest implements Request<Alert[]> {
 
     @Override
     public Alert[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String alertsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Alert[] alerts = gson.fromJson(alertsJson, Alert[].class);
+        Alert[] alerts = GSON.fromJson(alertsJson, Alert[].class);
 
         return alerts;
     }

@@ -17,7 +17,7 @@ public class RespondToResourceReviewRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/reviews/" + reviewId;
+        return BASE_URL + "/resources/" + resourceId + "/reviews/" + reviewId;
     }
 
     @Override
@@ -31,6 +31,6 @@ public class RespondToResourceReviewRequest implements Request<Void> {
 
         parameters.put("response", response);
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }

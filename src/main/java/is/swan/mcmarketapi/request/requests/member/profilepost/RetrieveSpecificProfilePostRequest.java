@@ -14,7 +14,7 @@ public class RetrieveSpecificProfilePostRequest implements Request<ProfilePost> 
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/self/profile-posts/" + profilePostId;
+        return BASE_URL + "/members/self/profile-posts/" + profilePostId;
     }
 
     @Override
@@ -24,9 +24,9 @@ public class RetrieveSpecificProfilePostRequest implements Request<ProfilePost> 
 
     @Override
     public ProfilePost handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String profilePostJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        ProfilePost profilePost = gson.fromJson(profilePostJson, ProfilePost.class);
+        ProfilePost profilePost = GSON.fromJson(profilePostJson, ProfilePost.class);
 
         return profilePost;
     }

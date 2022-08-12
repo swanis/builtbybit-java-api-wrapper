@@ -16,7 +16,7 @@ public class ListOwnedResourcesRequest implements Request<BasicResource[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/owned" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/resources/owned" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -26,9 +26,9 @@ public class ListOwnedResourcesRequest implements Request<BasicResource[]> {
 
     @Override
     public BasicResource[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourcesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        BasicResource[] resources = gson.fromJson(resourcesJson, BasicResource[].class);
+        BasicResource[] resources = GSON.fromJson(resourcesJson, BasicResource[].class);
 
         return resources;
     }

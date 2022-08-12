@@ -16,7 +16,7 @@ public class ListThreadsRequest implements Request<BasicThread[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/threads" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/threads" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -26,9 +26,9 @@ public class ListThreadsRequest implements Request<BasicThread[]> {
 
     @Override
     public BasicThread[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String threadsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        BasicThread[] threads = gson.fromJson(threadsJson, BasicThread[].class);
+        BasicThread[] threads = GSON.fromJson(threadsJson, BasicThread[].class);
 
         return threads;
     }

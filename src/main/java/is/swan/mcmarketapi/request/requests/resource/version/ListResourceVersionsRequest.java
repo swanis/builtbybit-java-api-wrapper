@@ -18,7 +18,7 @@ public class ListResourceVersionsRequest implements Request<Version[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/versions" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/resources/" + resourceId + "/versions" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListResourceVersionsRequest implements Request<Version[]> {
 
     @Override
     public Version[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceVersionsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Version[] resourceVersions = gson.fromJson(resourceVersionsJson, Version[].class);
+        Version[] resourceVersions = GSON.fromJson(resourceVersionsJson, Version[].class);
 
         return resourceVersions;
     }

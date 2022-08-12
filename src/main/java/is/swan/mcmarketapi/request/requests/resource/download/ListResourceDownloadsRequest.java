@@ -18,7 +18,7 @@ public class ListResourceDownloadsRequest implements Request<Download[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/downloads" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/resources/" + resourceId + "/downloads" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListResourceDownloadsRequest implements Request<Download[]> {
 
     @Override
     public Download[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceDownloadsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Download[] resourceDownloads = gson.fromJson(resourceDownloadsJson, Download[].class);
+        Download[] resourceDownloads = GSON.fromJson(resourceDownloadsJson, Download[].class);
 
         return resourceDownloads;
     }

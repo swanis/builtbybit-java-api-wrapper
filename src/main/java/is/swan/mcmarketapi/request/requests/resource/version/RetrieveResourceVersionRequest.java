@@ -15,7 +15,7 @@ public class RetrieveResourceVersionRequest implements Request<Version> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/versions/" + versionId;
+        return BASE_URL + "/resources/" + resourceId + "/versions/" + versionId;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class RetrieveResourceVersionRequest implements Request<Version> {
 
     @Override
     public Version handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceVersionJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        Version resourceVersion = gson.fromJson(resourceVersionJson, Version.class);
+        Version resourceVersion = GSON.fromJson(resourceVersionJson, Version.class);
 
         return resourceVersion;
     }

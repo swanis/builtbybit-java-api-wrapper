@@ -18,7 +18,7 @@ public class ModifyResourceRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId;
+        return BASE_URL + "/resources/" + resourceId;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class ModifyResourceRequest implements Request<Void> {
             parameters.put("description", description);
         }
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }

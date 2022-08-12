@@ -18,7 +18,7 @@ public class ListResourceUpdatesRequest implements Request<Update[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/updates" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/resources/" + resourceId + "/updates" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListResourceUpdatesRequest implements Request<Update[]> {
 
     @Override
     public Update[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceUpdatesJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Update[] resourceUpdates = gson.fromJson(resourceUpdatesJson, Update[].class);
+        Update[] resourceUpdates = GSON.fromJson(resourceUpdatesJson, Update[].class);
 
         return resourceUpdates;
     }

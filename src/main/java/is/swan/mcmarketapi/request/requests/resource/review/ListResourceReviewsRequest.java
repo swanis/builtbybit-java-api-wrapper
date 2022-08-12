@@ -18,7 +18,7 @@ public class ListResourceReviewsRequest implements Request<Review[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/reviews" + SortUtil.optionsToString(sortOptions);
+        return BASE_URL + "/resources/" + resourceId + "/reviews" + SortUtil.optionsToString(sortOptions);
     }
 
     @Override
@@ -28,9 +28,9 @@ public class ListResourceReviewsRequest implements Request<Review[]> {
 
     @Override
     public Review[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String resourceReviewsJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Review[] resourceReviews = gson.fromJson(resourceReviewsJson, Review[].class);
+        Review[] resourceReviews = GSON.fromJson(resourceReviewsJson, Review[].class);
 
         return resourceReviews;
     }

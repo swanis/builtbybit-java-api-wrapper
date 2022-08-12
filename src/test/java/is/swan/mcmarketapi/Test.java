@@ -9,7 +9,7 @@ import is.swan.mcmarketapi.request.requests.member.RetrieveYourselfRequest;
 public class Test {
 
     public static void main(String[] args) {
-        String token = System.getenv("MCMARKET_API_PRIVATE_TOKEN");
+        String token = System.getenv("BUILTBYBIT_API_PRIVATE_TOKEN");
         Client client = new Client(new Token(token, Token.Type.PRIVATE));
         Response<Member> response = client.sendOrWait(new RetrieveYourselfRequest());
 

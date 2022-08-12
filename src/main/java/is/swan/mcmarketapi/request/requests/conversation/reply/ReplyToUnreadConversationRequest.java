@@ -17,7 +17,7 @@ public class ReplyToUnreadConversationRequest implements Request<Integer> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/conversations/" + conversationId + "/replies";
+        return BASE_URL + "/conversations/" + conversationId + "/replies";
     }
 
     @Override
@@ -31,12 +31,12 @@ public class ReplyToUnreadConversationRequest implements Request<Integer> {
 
         parameters.put("message", message);
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 
     @Override
     public Integer handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         int id = element.getAsJsonObject().get("data").getAsInt();
 
         return id;

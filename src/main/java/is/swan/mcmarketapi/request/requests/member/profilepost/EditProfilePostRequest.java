@@ -16,7 +16,7 @@ public class EditProfilePostRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/self/profile-posts/" + profilePostId;
+        return BASE_URL + "/members/self/profile-posts/" + profilePostId;
     }
 
     @Override
@@ -30,6 +30,6 @@ public class EditProfilePostRequest implements Request<Void> {
 
         parameters.put("message", message);
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }

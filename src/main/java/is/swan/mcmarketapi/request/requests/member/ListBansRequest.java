@@ -8,7 +8,7 @@ public class ListBansRequest implements Request<Ban[]> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/bans";
+        return BASE_URL + "/members/bans";
     }
 
     @Override
@@ -18,9 +18,9 @@ public class ListBansRequest implements Request<Ban[]> {
 
     @Override
     public Ban[] handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String bansJson = element.getAsJsonObject().get("data").getAsJsonArray().toString();
-        Ban[] bans = gson.fromJson(bansJson, Ban[].class);
+        Ban[] bans = GSON.fromJson(bansJson, Ban[].class);
 
         return bans;
     }

@@ -14,7 +14,7 @@ public class FetchThreadRequest implements Request<Thread> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/threads/" + threadId;
+        return BASE_URL + "/threads/" + threadId;
     }
 
     @Override
@@ -24,9 +24,9 @@ public class FetchThreadRequest implements Request<Thread> {
 
     @Override
     public Thread handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String detailedThreadJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        Thread detailedThread = gson.fromJson(detailedThreadJson, Thread.class);
+        Thread detailedThread = GSON.fromJson(detailedThreadJson, Thread.class);
 
         return detailedThread;
     }

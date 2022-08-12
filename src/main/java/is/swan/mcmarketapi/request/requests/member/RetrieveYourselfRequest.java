@@ -8,7 +8,7 @@ public class RetrieveYourselfRequest implements Request<Member> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/members/self";
+        return BASE_URL + "/members/self";
     }
 
     @Override
@@ -18,9 +18,9 @@ public class RetrieveYourselfRequest implements Request<Member> {
 
     @Override
     public Member handleJson(String json) {
-        JsonElement element = gson.fromJson(json, JsonElement.class);
+        JsonElement element = GSON.fromJson(json, JsonElement.class);
         String memberJson = element.getAsJsonObject().get("data").getAsJsonObject().toString();
-        Member member = gson.fromJson(memberJson, Member.class);
+        Member member = GSON.fromJson(memberJson, Member.class);
 
         return member;
     }

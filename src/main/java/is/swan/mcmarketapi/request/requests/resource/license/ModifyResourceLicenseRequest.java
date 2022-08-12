@@ -21,7 +21,7 @@ public class ModifyResourceLicenseRequest implements Request<Void> {
 
     @Override
     public String getURL() {
-        return "https://api.mc-market.org/v1/resources/" + resourceId + "/licenses/" + licenseId;
+        return BASE_URL + "/resources/" + resourceId + "/licenses/" + licenseId;
     }
 
     @Override
@@ -38,6 +38,6 @@ public class ModifyResourceLicenseRequest implements Request<Void> {
         parameters.put("start_date", startDate);
         parameters.put("end_date", endDate);
 
-        return gson.toJson(parameters);
+        return GSON.toJson(parameters);
     }
 }
